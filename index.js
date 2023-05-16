@@ -1,7 +1,7 @@
 const canvas = document.getElementById('game')
 const ctx = canvas.getContext('2d')
 const resetBtn = document.getElementById('resetBtn')
-resetBtn.addEventListener('click', function() {
+resetBtn.addEventListener('click', function () {
     window.location.reload()
 })
 
@@ -28,11 +28,8 @@ let yVelocity = 0
 
 let score = 0;
 
-let faster = 0
-
-
 const gulpSound = new Audio('gulp.mp3')
-const fasterSound = new Audio('faster.wav')
+const fasterSound = new Audio('speedUp.wav')
 const gameOverSound = new Audio('gameover.wav')
 
 
@@ -47,11 +44,15 @@ function drawGame() {
     clearScreen()
 
     if (score > 10) {
-        speed = 7       
+        speed = 7
     }
 
     if (score > 20) {
         speed = 12
+    }
+
+    if (score > 30) {
+        speed = 17
     }
 
     checkAppleCollision()
@@ -92,6 +93,13 @@ function checkAppleCollision() {
         tailLength++;
         score++;
         gulpSound.play();
+        if (score == 10) {
+            fasterSound.play()
+        } else if (score == 20) {
+            fasterSound.play()
+        } else if (score == 30) {
+            fasterSound.play()
+        }
     }
 }
 
